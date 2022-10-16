@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Order Form</h1>
+<mat-dialog-content>
+  <form [formGroup]="orderForm">
+    <mat-form-field class="form__field" appearance="outline">
+        <mat-label>Item Name</mat-label>
+        <input formControlName="name" matInput>
+      </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button [disabled]="isProcessing" mat-dialog-close>Cancel</button>
+  <button *ngIf="!isUpdatingForm; else updateBtn" mat-raised-button color="primary" [disabled]="!orderForm.valid || isProcessing" (click)="onProcessOrder()">
+    {{ isProcessing ? 'Adding...' : 'Add' }}
+  </button>
+
+  <ng-template #updateBtn>
+    <button mat-raised-button color="primary" [disabled]="!orderForm.valid || isProcessing" (click)="onProcessOrder()">
+        {{ isProcessing ? 'Updating...' : 'Update' }}
+      </button>
+  </ng-template>
+</mat-dialog-actions>

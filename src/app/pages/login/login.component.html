@@ -1,0 +1,18 @@
+<div class="form__container">
+    <h1 mat-dialog-title>Login Form</h1>
+    <mat-dialog-content>
+        <form id="login__form" [formGroup]="loginForm">
+            <mat-form-field appearance="fill">
+                <mat-label>Username</mat-label>
+                <input formControlName="username" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <input formControlName="password" matInput>
+            </mat-form-field>
+            <button mat-raised-button color="primary" [disabled]="!loginForm.valid || isLoggingIn" (click)="onLogin()">
+                {{ isLoggingIn ? 'Logging In...' : 'Login' }}
+            </button>
+        </form>
+    </mat-dialog-content>
+</div>

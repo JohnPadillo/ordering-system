@@ -1,0 +1,10 @@
+.form__container {
+    max-width: 50%;
+    margin: 100px auto;
+    padding: 50px;
+}
+
+#login__form {
+    display: flex;
+    flex-direction: column;
+}
