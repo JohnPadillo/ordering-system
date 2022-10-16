@@ -1,0 +1,7 @@
+<mat-toolbar color="primary">
+  <span>Ordering System</span>
+  <span class="spacer"></span>
+  <button *ngIf="!!(authService.user$ | async)" mat-raised-button (click)="onLogOut()">Logout</button>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ordering-system-d2e26": {
+      "hosting": {
+        "ordering-system": [
+          "ordering-system-d2e26"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ordering-system-d2e26"
+  }
+}
