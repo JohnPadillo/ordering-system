@@ -12,7 +12,6 @@ export class AppComponent {
     public authService: AuthService,
     private router: Router
   ) {
-    this.authService.user$.subscribe(user => console.log(user))
   }
   title = 'ordering-system';
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private snackbar: MatSnackBar
   ) {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -24,7 +26,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authService.user$.subscribe(user => console.log(user))
   }
 
   async onLogin() {
@@ -35,6 +36,7 @@ export class LoginComponent implements OnInit {
       await this.authService.login(username, password);
       this.router.navigateByUrl('');
     } catch (error) {
+      this.snackbar.open('Incorrect username and password');
       console.error(error);
     }
 

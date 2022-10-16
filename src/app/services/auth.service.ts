@@ -16,9 +16,9 @@ export class AuthService {
     private afs: AngularFireAuth
   ) {
     this.user$ = this.user.asObservable()
-    .pipe(
-      filter(user => user !== undefined)
-    );
+      .pipe(
+        filter(user => user !== undefined)
+      );
 
     this.auth.onAuthStateChanged((user: any) => {
       if (user?.email === 'admin@gmail.com') {
@@ -26,8 +26,6 @@ export class AuthService {
       }
       this.user.next(user);
     });
-
-    this.user.subscribe(user => console.log(user));
   }
 
   async login(username: string, password: string) {
@@ -41,16 +39,12 @@ export class AuthService {
       password = 'admin123'
     }
 
-    try {
-      const user: any = await signInWithEmailAndPassword(this.auth, email, password);
+    const user: any = await signInWithEmailAndPassword(this.auth, email, password);
 
-      if (username == 'admin') {
-        user.isAdmin = true;
-      }
-      return user;
-    } catch (error) {
-      return null;
+    if (username == 'admin') {
+      user.isAdmin = true;
     }
+    return user;
   }
 
   async logout() {

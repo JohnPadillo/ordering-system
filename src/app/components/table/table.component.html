@@ -27,7 +27,7 @@
           <th mat-header-cell *matHeaderCellDef> Action </th>
           <td mat-cell *matCellDef="let order">
             <ng-container *ngIf="isAdmin; else userBtns">
-                <button [disabled]="isCTADisabled(order)" (click)="onApproveOrder(order)" color="warn" mat-icon-button>
+                <button [disabled]="isCTADisabled(order)" (click)="onApproveOrder(order)" color="primary" mat-icon-button>
                     <mat-icon>check</mat-icon>
                 </button>
                 <button [disabled]="isCTADisabled(order)" (click)="onRejectOrder(order)" color="warn" mat-icon-button>
@@ -36,8 +36,8 @@
             </ng-container>
 
             <ng-template #userBtns>
-                <button [disabled]="isCTADisabled(order)" (click)="onEditOrder(order)" mat-icon-button>
-                    <mat-icon color="primary">edit</mat-icon>
+                <button [disabled]="isCTADisabled(order)" (click)="onEditOrder(order)" color="primary" mat-icon-button>
+                    <mat-icon>edit</mat-icon>
                 </button>
                 <button [disabled]="isCTADisabled(order)" (click)="onDeleteOrder(order.id)" color="warn" mat-icon-button>
                     <mat-icon>delete</mat-icon>
